@@ -5,12 +5,12 @@ const moment = require('moment');
 const Spotify = require('node-spotify-api');
 const fs = require("fs");
 
-var keys = require("./keys.js");
+const keys = require("./keys.js");
 
-var spotify = new Spotify(keys.spotify);
+const spotify = new Spotify(keys.spotify);
 
 //creating variables 
-let tasker = process.argv[2];
+const tasker = process.argv[2];
 let argument = process.argv.slice(3).join(" ");
 
 
@@ -36,11 +36,11 @@ if (tasker === "concert-this") {
 
     if (argument !== "") {
 
-        songify(); 
+        songify(argument); 
     } else {
 
         argument = "The Sign";
-        songify(); 
+        songify(argument); 
     }
 
 } else if (tasker === "do-what-it-says") {
@@ -99,12 +99,13 @@ function movies() {
 
 //function to find song info
 
-function songify() {
+function songify(song) {
 
-    spotify.search({ type: 'track', query: argument }, function (err, data) {
+    spotify.search({ type: 'track', query: song }, function (err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
+        
 
         console.log(`Artist Name: ${data.tracks.items[0].artists[0].name}`);
         console.log(`Song:  ${data.tracks.items[0].name}`); 
@@ -125,9 +126,13 @@ function doit() {
         }
       
         // We will then print the contents of data
-        console.log(data);
+        //console.log(data);
       
-        
+        let splitter = data.split(","); 
+
+        //console.log(JSON.parse(splitter[1])); 
+
+        songify(splitter[1]); 
       
       });
       
