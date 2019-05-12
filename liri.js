@@ -36,19 +36,19 @@ if (tasker === "concert-this") {
 
     if (argument !== "") {
 
-        songify(argument); 
+        songify(argument);
     } else {
 
         argument = "The Sign";
-        songify(argument); 
+        songify(argument);
     }
 
 } else if (tasker === "do-what-it-says") {
 
-    doit(); 
+    doit();
 
 } else {
-    console.log("Oops! Liri does not recognize this command!");
+    console.log("Oops! Liri does not recognize this command, please try again!");
 }
 
 
@@ -65,10 +65,14 @@ function bands() {
     axios.get(bandQuery).then(
         function (response) {
 
+            for (let i = 0; i < 5; i++) {
 
-            console.log("Venue name: ", response.data[0].venue.name);
-            console.log(`Venue Location: ${response.data[0].venue.city}, ${response.data[0].venue.country} `);
-            console.log("Date of event: ", moment(response.data[0].datetime).format("MM/DD/YY"));
+                console.log("==================================="); 
+                console.log("Venue name: ", response.data[i].venue.name);
+                console.log(`Venue Location: ${response.data[i].venue.city}, ${response.data[0].venue.country} `);
+                console.log("Date of event: ", moment(response.data[i].datetime).format("MM/DD/YY"));
+                console.log("==================================="); 
+            }
         }
     );
 
@@ -105,35 +109,39 @@ function songify(song) {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
-        
 
-        console.log(`Artist Name: ${data.tracks.items[0].artists[0].name}`);
-        console.log(`Song:  ${data.tracks.items[0].name}`); 
-        console.log(`Song Preview: ${data.tracks.items[0].preview_url}`); 
-        console.log(`Album: ${data.tracks.items[0].album.name}`); 
+        for (let i = 0; i < 10; i++) {
+
+            console.log("==================================="); 
+            console.log(`Artist Name: ${data.tracks.items[i].artists[0].name}`);
+            console.log(`Song:  ${data.tracks.items[i].name}`);
+            console.log(`Song Preview: ${data.tracks.items[i].preview_url}`);
+            console.log(`Album: ${data.tracks.items[i].album.name}`);
+            console.log("==================================="); 
+        }
     });
 
 
-}; 
+};
 //Do what liri says function 
 function doit() {
 
-    fs.readFile("random.txt", "utf8", function(error, data) {
+    fs.readFile("random.txt", "utf8", function (error, data) {
 
         // If the code experiences any errors it will log the error to the console.
         if (error) {
-          return console.log(error);
+            return console.log(error);
         }
-      
+
         // We will then print the contents of data
         //console.log(data);
-      
-        let splitter = data.split(","); 
+
+        let splitter = data.split(",");
 
         //console.log(JSON.parse(splitter[1])); 
 
-        songify(splitter[1]); 
-      
-      });
-      
+        songify(splitter[1]);
+
+    });
+
 }; 
