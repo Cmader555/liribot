@@ -1,7 +1,7 @@
 # liribot 
 
 ### Project Overview
-Liri is meant to be like SIRI. Like SIRI, Liri takes in commands and produces data. Liri is command line node application that takes in commands in the terminal and then executes them via node. The commands for Liri were created via JavaScript and the following commands are recognized: 
+Liri is meant to be like SIRI. Like SIRI, Liri takes in commands and produces data. Liri is a command line node application that takes in commands in the terminal and then executes them via node. The commands for Liri were created via JavaScript and the following commands are recognized: 
 
    * `concert-this`
 
@@ -13,7 +13,7 @@ Liri is meant to be like SIRI. Like SIRI, Liri takes in commands and produces da
 
 ### How Liri Works 
 
-Like stated before Liri's are created using javascript but executed using Node. Package.JSON was initialized so third party npm packages could be installed. Node Modules was initialized for the storage of all the files that allow all third party packages to properly run. Dotenv was installed to create environmental variables that are stored in a global object. Node_modules, .env, DS_store are all kept in gitignore so they are not uploaded to github to keep keys private, and so unnecessarily large files are not uploaded.  The Axios and Spotify API packages allow for API calls to be preformed. 
+Like stated before Liri's commands are created using javascript but executed using Node. Package.JSON was initialized so third party npm packages could be installed. Node Modules was initialized for the storage of all the files that allow all third party packages to properly run. Dotenv was installed to create environmental variables that are stored in a global object. Node_modules, .env, DS_store are all kept in gitignore so they are not uploaded to github to keep keys private, and so unnecessarily large files are not uploaded.  The Axios and Spotify API packages allow for API calls to be preformed. 
 
 
 
@@ -73,7 +73,7 @@ Like stated before Liri's are created using javascript but executed using Node. 
 ![command line concert](images/spotifyCommand.png)
 
 * spotify-this-song command ran. 
-![concert command ran](images/spotifyExample.png)
+![concert command ran](images/spotifyExampleMuse.png)
 
 * spotify-this-song command ran without argument. 
 ![concert command ran](images/spotifyExample.png)
